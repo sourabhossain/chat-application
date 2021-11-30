@@ -22,6 +22,7 @@ const addUserValidators = [
 		.custom(async (value) => {
 			try {
 				const user = await User.findOne({ email: value });
+
 				if (user) {
 					throw createError("Email already is use!");
 				}
@@ -63,8 +64,8 @@ const addUserValidationHandler = (req, res, next) => {
 			const { filename } = req.files[0];
 			unlink(
 				path.join(__dirname, `/../public/uploads/avatars/${filename}`),
-				(err) => {
-					if (err) console.log(err);
+				(error) => {
+					if (error) console.log(error);
 				}
 			);
 		}

@@ -10,12 +10,12 @@ function attachmentUpload(req, res, next) {
 	);
 
 	// call the middleware function
-	upload.any()(req, res, (err) => {
-		if (err) {
+	upload.any()(req, res, (error) => {
+		if (error) {
 			res.status(500).json({
 				errors: {
 					avatar: {
-						msg: err.message,
+						msg: error.message,
 					},
 				},
 			});
